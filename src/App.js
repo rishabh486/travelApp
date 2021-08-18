@@ -2,49 +2,49 @@ import React from "react";
 import "./styles.css";
 import { useState } from "react";
 
-const bookDB = {
-  javascript: [
-    { name: "Eloquent JavaScript", rating: "4/5" },
-    { name: "You Don't Know JS", rating: "3.5/5" }
+const stateDB = {
+  Karnataka: [
+    { name: "Udupi", rating: "4/5" },
+    { name: "Shimoga", rating: "3.5/5" }
   ],
 
-  fiction: [
+  TamilNadu: [
     {
-      name: "Shiva Trilogy",
+      name: "Kodaikanal",
       rating: "5/5"
     },
     {
-      name: "Harry Potter and the Sorcerer's Stone",
+      name: "Ooty",
       rating: "4.5/5"
     }
   ],
-  business: [
+  Maharastra: [
     {
-      name: "Never Split the Difference",
-      rating: "3.5/5"
+      name: "Lonavala",
+      rating: "4/5"
     },
     {
-      name: "Loonshots",
+      name: "khandala",
       rating: "5/5"
     }
   ]
 };
 
 export default function App() {
-  const [selectedGenre, setGenre] = useState("business");
+  const [selectedGenre, setGenre] = useState("Karnataka");
   function genreClickHandler(genre) {
     setGenre(genre);
   }
   return (
     <div className="App">
-      <h1> 📚 goodbooks </h1>
+      <h1> Travel Recommendation </h1>
       <p style={{ fontSize: "smaller" }}>
         {" "}
-        Checkout my favorite books. Select a genre to get started{" "}
+        Checkout my favorite Places. Select a State to get started{" "}
       </p>
 
       <div>
-        {Object.keys(bookDB).map((genre) => (
+        {Object.keys(stateDB).map((genre) => (
           <button
             onClick={() => genreClickHandler(genre)}
             style={{
@@ -63,9 +63,9 @@ export default function App() {
       <hr />
       <div style={{ textAlign: "left" }}>
         <ul style={{ paddingInlineStart: "0" }}>
-          {bookDB[selectedGenre].map((book) => (
+          {stateDB[selectedGenre].map((genre) => (
             <li
-              key={book.name}
+              key={genre.name}
               style={{
                 listStyle: "none",
                 padding: "1rem",
@@ -76,8 +76,8 @@ export default function App() {
               }}
             >
               {" "}
-              <div style={{ fontSize: "larger" }}> {book.name} </div>
-              <div style={{ fontSize: "smaller" }}> {book.rating} </div>
+              <div style={{ fontSize: "larger" }}> {genre.name} </div>
+              <div style={{ fontSize: "smaller" }}> {genre.rating} </div>
             </li>
           ))}
         </ul>
